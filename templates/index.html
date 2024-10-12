@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4" x-data="appData()">
+        <header class="bg-blue-600 text-white p-4 rounded-t-lg">
+            <h1 class="text-3xl font-bold">APK Analyzer</h1>
+        </header>
+
+        <main class="bg-white p-6 rounded-b-lg shadow-md">
+            <form @submit.prevent="analyzeAPK" class="mb-8">
+                <div class="flex items-center space-x-4">
+                    <label for="apk-file" class="flex-1">
+                        <div class="flex items-center justify-center w-full">
+                            <label for="apk-file" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-500">APK files only</p>
+                                </div>
+                                <input id="apk-file" type="file" accept=".apk" class="hidden" @change="fileSelected" />
+                            </label>
+                        </div>
+                    </label>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" :disabled="!file">
+                        Analyze APK
+                    </button>
+                </div>
+                <p x-text="fileName" class="mt-2 text-sm text-gray-600"></p>
+            </form>
+
+            <div x-show="isLoading" class="text-center">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+                <p class="mt-2">Analyzing APK...</p>
+            </div>
+
+            <div x-show="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline" x-text="error"></span>
+            </div>
+
+            <div x-show="result" class="bg-gray-100 p-4 rounded-lg">
+                <h2 class="text-xl font-bold mb-4">Analysis Result</h2>
+                <p x-text="resultMessage" :class="{'text-green-600': result && !result.is_malware, 'text-red-600': result && result.is_malware}" class="font-bold mb-4"></p>
+                
+                <div x-show="result" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold mb-2">APK Details</h3>
+                        <p><strong>Filename:</strong> <span x-text="result?.filename"></span></p>
+                        <p><strong>Package Name:</strong> <span x-text="result?.package_name"></span></p>
+                        <p><strong>Package:</strong> <span x-text="result?.package"></span></p>
+                        <p><strong>Android Version:</strong> <span x-text="result?.android_version"></span></p>
+                    </div>
+                    <div x-show="result?.permissions">
+                        <h3 class="font-bold mb-2">Permissions</h3>
+                        <ul class="list-disc pl-5">
+                            <template x-for="perm in result?.permissions" :key="perm">
+                                <li x-text="perm"></li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div x-show="result?.activities" class="mt-4">
+                    <h3 class="font-bold mb-2">Activities</h3>
+                    <ul class="list-disc pl-5">
+                        <template x-for="activity in result?.activities" :key="activity">
+                            <li x-text="activity"></li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function appData() {
+            return {
+                file: null,
+                fileName: '',
+                isLoading: false,
+                result: null,
+                resultMessage: '',
+                error: null,
+                fileSelected(event) {
+                    this.file = event.target.files[0];
+                    this.fileName = this.file ? this.file.name : '';
+                    this.error = null;  // Clear any previous errors
+                },
+                analyzeAPK() {
+                    if (!this.file) {
+                        this.error = 'Please select an APK file';
+                        return;
+                    }
+                    this.isLoading = true;
+                    this.error = null;  // Clear any previous errors
+                    const formData = new FormData();
+                    formData.append('file', this.file);
+                    
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        this.isLoading = false;
+                        if (data.error) {
+                            this.error = data.error;
+                            this.result = null;
+                            this.resultMessage = '';
+                        } else {
+                            this.result = data;
+                            this.resultMessage = data.is_malware ? 'This APK is identified as malware!' : 'This APK is not identified as malware.';
+                        }
+                    })
+                    .catch(error => {
+                        this.isLoading = false;
+                        this.error = 'An error occurred while analyzing the APK';
+                        console.error('Error:', error);
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

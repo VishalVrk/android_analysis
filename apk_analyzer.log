@@ -1,0 +1,76 @@
+2024-10-12 14:01:46,038:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-12 14:01:46,038:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:01:46,039:INFO: * Restarting with stat
+2024-10-12 14:01:47,246:WARNING: * Debugger is active!
+2024-10-12 14:01:47,260:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:03:53,651:INFO: * Detected change in '/Users/vishalvaitheeswaran/Desktop/DroidDetective/test.py', reloading
+2024-10-12 14:03:53,878:INFO: * Restarting with stat
+2024-10-12 14:03:59,543:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://192.168.1.47:5006
+2024-10-12 14:03:59,543:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:03:59,544:INFO: * Restarting with stat
+2024-10-12 14:04:00,709:WARNING: * Debugger is active!
+2024-10-12 14:04:00,720:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:04:13,820:INFO:127.0.0.1 - - [12/Oct/2024 14:04:13] "GET / HTTP/1.1" 200 -
+2024-10-12 14:04:14,647:INFO:127.0.0.1 - - [12/Oct/2024 14:04:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-12 14:06:09,380:INFO:127.0.0.1 - - [12/Oct/2024 14:06:09] "GET /logs HTTP/1.1" 200 -
+2024-10-12 14:09:28,597:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://192.168.1.47:5006
+2024-10-12 14:09:28,597:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:09:28,598:INFO: * Restarting with stat
+2024-10-12 14:09:29,594:WARNING: * Debugger is active!
+2024-10-12 14:09:29,604:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:09:34,336:INFO:127.0.0.1 - - [12/Oct/2024 14:09:34] "GET / HTTP/1.1" 200 -
+2024-10-12 14:09:50,897:INFO:Analyzing APK: bitbar-sample-app.apk
+2024-10-12 14:09:52,320:WARNING:Requested API level 33 is larger than maximum we have, returning API level 28 instead.
+2024-10-12 14:09:52,335:INFO:End of creating cross references (XREF)
+2024-10-12 14:09:52,335:INFO:run time: 0min 00s
+2024-10-12 14:09:52,343:INFO:APK: bitbar-sample-app.apk, Is Malware: False, Package: com.bitbar.testdroid
+2024-10-12 14:09:52,343:ERROR:Error analyzing APK bitbar-sample-app.apk: Object of type bool_ is not JSON serializable
+2024-10-12 14:09:52,344:INFO:127.0.0.1 - - [12/Oct/2024 14:09:52] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2024-10-12 14:10:13,204:INFO:127.0.0.1 - - [12/Oct/2024 14:10:13] "GET /logs HTTP/1.1" 200 -
+2024-10-12 14:11:17,766:INFO: * Detected change in '/Users/vishalvaitheeswaran/Desktop/DroidDetective/test.py', reloading
+2024-10-12 14:11:18,003:INFO: * Restarting with stat
+2024-10-12 14:11:26,419:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-10-12 14:11:26,419:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:11:26,420:INFO: * Restarting with stat
+2024-10-12 14:11:27,490:WARNING: * Debugger is active!
+2024-10-12 14:11:27,502:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:12:04,167:INFO: * Detected change in '/Users/vishalvaitheeswaran/Desktop/DroidDetective/test.py', reloading
+2024-10-12 14:12:04,393:INFO: * Restarting with stat
+2024-10-12 14:12:09,186:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5080
+ * Running on http://192.168.1.47:5080
+2024-10-12 14:12:09,186:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:12:09,187:INFO: * Restarting with stat
+2024-10-12 14:12:10,418:WARNING: * Debugger is active!
+2024-10-12 14:12:10,432:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:12:14,290:INFO:127.0.0.1 - - [12/Oct/2024 14:12:14] "GET / HTTP/1.1" 200 -
+2024-10-12 14:12:14,962:INFO:127.0.0.1 - - [12/Oct/2024 14:12:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-12 14:13:36,420:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5080
+ * Running on http://192.168.1.47:5080
+2024-10-12 14:13:36,420:INFO:[33mPress CTRL+C to quit[0m
+2024-10-12 14:13:36,421:INFO: * Restarting with stat
+2024-10-12 14:13:37,541:WARNING: * Debugger is active!
+2024-10-12 14:13:37,552:INFO: * Debugger PIN: 115-509-649
+2024-10-12 14:13:39,878:INFO:127.0.0.1 - - [12/Oct/2024 14:13:39] "GET / HTTP/1.1" 200 -
+2024-10-12 14:13:48,920:INFO:Analyzing APK: bitbar-sample-app.apk
+2024-10-12 14:13:50,593:WARNING:Requested API level 33 is larger than maximum we have, returning API level 28 instead.
+2024-10-12 14:13:50,611:INFO:End of creating cross references (XREF)
+2024-10-12 14:13:50,611:INFO:run time: 0min 00s
+2024-10-12 14:13:50,624:INFO:APK: bitbar-sample-app.apk, Is Malware: False, Package: com.bitbar.testdroid
+2024-10-12 14:13:50,626:INFO:127.0.0.1 - - [12/Oct/2024 14:13:50] "POST /upload HTTP/1.1" 200 -
+2024-10-12 14:14:01,325:INFO:Analyzing APK: malware.apk
+2024-10-12 14:14:10,339:INFO:End of creating cross references (XREF)
+2024-10-12 14:14:10,339:INFO:run time: 0min 01s
+2024-10-12 14:14:10,385:WARNING:APK: malware.apk, Is Malware: True, Package: com.npkr.militarysuitphtomontage
+2024-10-12 14:14:10,386:INFO:127.0.0.1 - - [12/Oct/2024 14:14:10] "POST /upload HTTP/1.1" 200 -
